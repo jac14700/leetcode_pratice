@@ -33,13 +33,12 @@ public final class App {
         return Head;
     }
 
-    public static Pair<String, String> max_and_List(String X, String Y) {//put larger digits num in the front, and the smaller in the back
+    public static Pair<String, String> max_and_List(String X, String Y) {
+        //put larger digits num in the front, and the smaller in the back
         final Pair<String, String> pair;
-        if (X.length() >= Y.length()) {
-            pair = Pair.with(X, Y);
-        } else {
-            pair = Pair.with(Y, X);
-        }
+        if (X.length() >= Y.length()) pair = Pair.with(X, Y);
+        else pair = Pair.with(Y, X);
+
         return pair;
     }
 
