@@ -62,8 +62,7 @@ public final class App {
     }
 
     public static void main(final String[] args) throws IOException {
-        final String X = "1";
-        final String Y = "9";
+        final String X = "1", Y = "9";
         final Pair<String, String> pair = max_and_List(X, Y);
         ListNode l_l = input2ListNode(pair.getValue0()), s_l = input2ListNode(pair.getValue1());
         ListNode result = addTwoNumbers(l_l, s_l);
