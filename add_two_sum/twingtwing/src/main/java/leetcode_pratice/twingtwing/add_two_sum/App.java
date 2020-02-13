@@ -3,9 +3,6 @@ import java.io.IOException;
 
 import org.javatuples.Pair;
 
-/**
- * Hello world!
- */
 public final class App {
     private App() {
     }
@@ -36,7 +33,7 @@ public final class App {
         return Head;
     }
 
-    public static Pair<String, String> max_and_List(String X, String Y) {// bigger front, smaller back
+    public static Pair<String, String> max_and_List(String X, String Y) {//put larger digits num in the front, and the smaller in the back
         final Pair<String, String> pair;
         if (X.length() >= Y.length()) {
             pair = Pair.with(X, Y);
