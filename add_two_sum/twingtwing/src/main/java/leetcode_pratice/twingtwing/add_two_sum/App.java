@@ -7,15 +7,9 @@ public final class App {
     private App() {
     }
     static class ListNode{
-
         public int item;
-        
         public ListNode next;
-
-        public ListNode pre;
-        public ListNode(int val){
-            item = val;
-        }
+        public ListNode(int val){item = val;}
     };
     public static ListNode input2ListNode(String input) {
         final int last_index = input.length();
@@ -25,9 +19,7 @@ public final class App {
             l.item = Character.getNumericValue(input.charAt(last_index - ptr_idx));
             if (ptr_idx != last_index) {
                 l.next = new ListNode(-1);
-                ListNode tmp = l;
                 l = l.next;
-                l.pre = tmp;
             }
         }
         return Head;
