@@ -25,7 +25,7 @@ public final class App {
         return Head;
     }
 
-    public static Pair<String, String> max_and_List(String X, String Y) {
+    public static Pair<String, String> sort_max2the_front(String X, String Y) {
         //put larger digits num in the front, and the smaller in the back
         final Pair<String, String> pair;
         if (X.length() >= Y.length()) pair = Pair.with(X, Y);
@@ -41,20 +41,20 @@ public final class App {
         head_of_result = result;
         try{	
                 while(!(carry ==0 && p1.item==-1)){
-                if(p2!=null && p1.item !=-1)sum = carry + p1.item + p2.item;//when p2!=-1 p1 wont be -1, normal type
-                else if(p1.item !=-1 && p2==null) sum = carry + p1.item;// when p2 == -1
-                else if(p1.item ==-1) sum = carry;//when p1 ==-1 , p2 will be -1
+                    if(p2!=null && p1.item !=-1) sum = carry + p1.item + p2.item; //when p2!=-1 p1 wont be -1, normal type
+                    else if(p1.item !=-1 && p2==null) sum = carry + p1.item; // when p2 == -1
+                    else if(p1.item ==-1) sum = carry; //when p1 ==-1 , p2 will be -1
 
-                carry = sum /10;
-                c_digi = sum %10;
-                result.item = c_digi;
-                result.next = new ListNode(-1);
-                result = result.next;
-                if(p1!=null) p1 = p1.next;
-                if(p2!=null) p2 = p2.next;
+                    carry = sum /10;
+                    c_digi = sum %10;
+                    result.item = c_digi;
+                    result.next = new ListNode(-1);
+                    result = result.next;
+                    if(p1!=null) p1 = p1.next;
+                    if(p2!=null) p2 = p2.next;
             }
         }catch(NullPointerException e){
-            if(carry>0) result.item = carry;//when p1 ==-1 , p2 will be -1
+            if(carry>0) result.item = carry;
             return head_of_result;
         }
         return head_of_result;
@@ -62,8 +62,8 @@ public final class App {
     }
 
     public static void main(final String[] args) throws IOException {
-        final String X = "1", Y = "9";
-        final Pair<String, String> pair = max_and_List(X, Y);
+        final String X ="1", Y ="9";
+        final Pair<String, String> pair = sort_max2the_front(X, Y);
         ListNode l_l = input2ListNode(pair.getValue0()), s_l = input2ListNode(pair.getValue1());
         ListNode result = addTwoNumbers(l_l, s_l);
         while(result!=null){
