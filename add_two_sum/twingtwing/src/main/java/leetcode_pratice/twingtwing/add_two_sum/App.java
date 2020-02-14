@@ -25,46 +25,30 @@ public final class App {
         return Head;
     }
 
-    public static Pair<String, String> sort_max2the_front(String X, String Y) {
-        //put larger digits num in the front, and the smaller in the back
-        final Pair<String, String> pair;
-        if (X.length() >= Y.length()) pair = Pair.with(X, Y);
-        else pair = Pair.with(Y, X);
-
-        return pair;
-    }
-
-    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        // l1 is set to be the larger digits one, even if l1's is equal to l2's
-        int carry = 0, sum = 0, c_digi;
-        ListNode p1 = l1, p2 = l2, result = new ListNode(-1), head_of_result;
-        head_of_result = result;
-        try{	
-                while(!(carry ==0 && p1.item==-1)){
-                    if(p2!=null && p1.item !=-1) sum = carry + p1.item + p2.item; //when p2!=-1 p1 wont be -1, normal type
-                    else if(p1.item !=-1 && p2==null) sum = carry + p1.item; // when p2 == -1
-                    else if(p1.item ==-1) sum = carry; //when p1 ==-1 , p2 will be -1
-
-                    carry = sum /10;
-                    c_digi = sum %10;
-                    result.item = c_digi;
-                    result.next = new ListNode(-1);
-                    result = result.next;
-                    if(p1!=null) p1 = p1.next;
-                    if(p2!=null) p2 = p2.next;
-            }
-        }catch(NullPointerException e){
-            if(carry>0) result.item = carry;
-            return head_of_result;
+        public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        int carry = 0, sum = 0, p1_val = 0, p2_val = 0;
+        ListNode head_of_result = new ListNode(0);
+        ListNode result = head_of_result;
+        while (l1 != null || l2 != null) {
+            p1_val = (l1 != null) ? l1.item : 0;
+            p2_val = (l2 != null) ? l2.item : 0;
+            sum = carry + p1_val + p2_val;
+            carry = sum / 10;
+            result = result.next = new ListNode(sum % 10);
+            if (l1 != null)
+                l1 = l1.next;
+            if (l2 != null)
+                l2 = l2.next;
         }
-        return head_of_result;
-
+        if (carry > 0) {
+            result.next = new ListNode(carry);
+        }
+        return head_of_result.next;
     }
 
     public static void main(final String[] args) throws IOException {
-        final String X ="1", Y ="9";
-        final Pair<String, String> pair = sort_max2the_front(X, Y);
-        ListNode l_l = input2ListNode(pair.getValue0()), s_l = input2ListNode(pair.getValue1());
+        final String X = "999999999999991", Y = "9";
+        ListNode l_l = input2ListNode(X), s_l = input2ListNode(Y);
         ListNode result = addTwoNumbers(l_l, s_l);
         while(result!=null){
             if(result.item!=-1) System.out.println(result.item);
